@@ -9,13 +9,8 @@ const app = fastify({
 });
 
 app.register(cors, {
-  origin: (origin, cb) => {
-    if (/localhost/.test(origin)) {
-      cb(null, true);
-      return;
-    }
-    cb(new Error("Not allowed"));
-  },
+  origin: "*",
+  methods: ["OPTIONS", "GET", "POST", "PUT", "PATCH", "DELETE"],
 });
 
 app.register(helmet);

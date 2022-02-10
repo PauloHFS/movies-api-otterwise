@@ -1,9 +1,9 @@
 {
-  "name": "boilerplate-back-end",
+  "name": "movies-api-otterwise",
   "version": "1.0.0",
   "main": "src/index.js",
-  "repository": "git@github.com:OtterwiseCo/boilerplate-back-end.git",
-  "author": "João Pedro Bretanha <joaopedro@nave.rs>",
+  "repository": "git@github.com:PauloHFS/movies-api-otterwise.git",
+  "author": "Paulo Hernane Fontes e Silva <paulohernane10@gmail.com>",
   "license": "MIT",
   "type": "module",
   "prisma": {
@@ -20,10 +20,10 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15",
-    "prisma": "^3.9.1"
+    "prisma": "^3.9.2"
   },
   "dependencies": {
-    "@prisma/client": "^3.9.1",
+    "@prisma/client": "^3.9.2",
     "bcrypt": "^5.0.1",
     "fastify": "^3.27.1",
     "fastify-cors": "^6.0.2",
