@@ -8,6 +8,12 @@ const userData = [
   },
 ];
 
+const movieGenderData = ["action", "scify", "horror", "suspense"].map(
+  (name) => {
+    return { name };
+  }
+);
+
 async function main() {
   console.log(`Start seeding ...`);
   for (const u of userData) {
@@ -18,6 +24,12 @@ async function main() {
     });
     console.log(`Created user with id: ${user.id}`);
   }
+
+  for (const movieGender of movieGenderData) {
+    const gender = await prisma.gender.create({ data: movieGender });
+    console.log(`Created gender with id: ${gender.id}`);
+  }
+
   console.log(`Seeding finished.`);
 }
 

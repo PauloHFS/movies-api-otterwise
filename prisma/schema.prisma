@@ -11,8 +11,26 @@ datasource db {
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
-  name    String?  @db.VarChar(255)
-  email   String   @unique @db.VarChar(255)
+  id       Int     @id @default(autoincrement())
+  name     String  @db.VarChar(255)
+  email    String  @unique @db.VarChar(255)
   password String
+  movies   Movie[]
+}
+
+model Movie {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  gender      Gender   @relation(fields: [gender_id], references: [id])
+  gender_id   Int
+  user        User     @relation(fields: [user_id], references: [id])
+  user_id     Int
+  createdAt   DateTime @updatedAt
+}
+
+model Gender {
+  id     Int     @id @default(autoincrement())
+  name   String
+  movies Movie[]
 }
