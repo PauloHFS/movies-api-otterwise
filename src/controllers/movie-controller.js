@@ -57,3 +57,16 @@ export const create = async (req, reply) => {
     reply.status(500).send(error);
   }
 };
+
+export const remove = async (req, reply) => {
+  const { id } = req.params;
+  try {
+    const movie = await prisma.movie.delete({
+      where: { id: parseInt(id) },
+    });
+    reply.status(200).send(movie);
+  } catch (error) {
+    console.error(error);
+    reply.status(500).send(error);
+  }
+};
