@@ -58,6 +58,36 @@ export const create = async (req, reply) => {
   }
 };
 
+export const update = async (req, reply) => {
+  const { id } = req.params;
+  const data = req.body;
+  try {
+    const movie = await prisma.movie.update({
+      where: { id: parseInt(id) },
+      data,
+    });
+    reply.status(200).send(movie);
+  } catch (error) {
+    console.error(error);
+    reply.status(500).send(error);
+  }
+};
+
+export const updateAtributes = async (req, reply) => {
+  const { id } = req.params;
+  const data = req.body;
+  try {
+    const movie = await prisma.movie.update({
+      where: { id: parseInt(id) },
+      data,
+    });
+    reply.status(200).send(movie);
+  } catch (error) {
+    console.error(error);
+    reply.status(500).send(error);
+  }
+};
+
 export const remove = async (req, reply) => {
   const { id } = req.params;
   try {

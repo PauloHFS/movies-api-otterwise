@@ -2,7 +2,7 @@ import * as MovieController from "../controllers/movie-controller.js";
 import { validateRequest } from "../middleware/auth.js";
 
 export default {
-  showAllMovies: {
+  showAll: {
     method: "GET",
     url: "/movies",
     handler: MovieController.index,
@@ -20,7 +20,7 @@ export default {
     },
     handler: MovieController.getMovie,
   },
-  createMovie: {
+  create: {
     method: "POST",
     url: "/movies",
     schema: {
@@ -44,10 +44,75 @@ export default {
     preHandler: [validateRequest],
     handler: MovieController.create,
   },
-  deleteMovie: {
+  update: {
+    method: "PUT",
+    url: "/movies/:id",
+    schema: {
+      header: {
+        type: "object",
+        properties: {
+          Authorization: { type: "string" },
+        },
+        required: ["Authorization"],
+      },
+      params: {
+        type: "object",
+        properties: {
+          id: { type: "number" },
+        },
+      },
+      body: {
+        type: "object",
+        properties: {
+          title: { type: "string" },
+          description: { type: "string" },
+          gender_id: { type: "number" },
+        },
+      },
+    },
+    preHandler: [validateRequest],
+    handler: MovieController.update,
+  },
+  updateAtributes: {
+    method: "PATCH",
+    url: "/movies/:id",
+    schema: {
+      header: {
+        type: "object",
+        properties: {
+          Authorization: { type: "string" },
+        },
+        required: ["Authorization"],
+      },
+      params: {
+        type: "object",
+        properties: {
+          id: { type: "number" },
+        },
+      },
+      body: {
+        type: "object",
+        properties: {
+          title: { type: ["string", "null"] },
+          description: { type: ["string", "null"] },
+          gender_id: { type: ["number", "null"] },
+        },
+      },
+    },
+    preHandler: [validateRequest],
+    handler: MovieController.updateAtributes,
+  },
+  delete: {
     method: "DELETE",
     url: "/movies/:id",
     schema: {
+      header: {
+        type: "object",
+        properties: {
+          Authorization: { type: "string" },
+        },
+        required: ["Authorization"],
+      },
       params: {
         type: "object",
         properties: {
